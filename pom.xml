@@ -161,4 +161,11 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/VoRaX00/ural-common-starter-v2</url>
+        </repository>
+    </distributionManagement>
+
 </project>
