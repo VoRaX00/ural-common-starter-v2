@@ -13,13 +13,14 @@
 
     <groupId>ural</groupId>
     <artifactId>ural-common-starter</artifactId>
-    <version>1.11-SNAPSHOT</version>
+    <version>1.12-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>ural-db-starter</module>
         <module>ural-api-starter</module>
         <module>ural-exception-starter</module>
         <module>ural-test-starter</module>
+        <module>ural-rest-starter</module>
     </modules>
 
     <properties>
@@ -36,6 +37,32 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>ural-exception-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>ural-api-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>ural-test-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>ural-rest-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>ural-db-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
