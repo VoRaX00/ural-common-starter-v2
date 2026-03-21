@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.ural.dto.ErrorDto;
-import ru.ural.exceptions.NotFoundException;
 import ru.ural.exceptions.RestBaseException;
 
 import java.time.LocalDateTime;
@@ -16,7 +15,7 @@ import java.time.LocalDateTime;
 public class RestExceptionHandler {
 
     @ExceptionHandler(RestBaseException.class)
-    public ResponseEntity<ErrorDto> handlerError(NotFoundException e) {
+    public ResponseEntity<ErrorDto> handlerError(RestBaseException e) {
         return new ResponseEntity<>(ErrorDto.builder()
                 .message(e.getMessage())
                 .timestamp(LocalDateTime.now())
