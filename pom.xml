@@ -13,7 +13,7 @@
 
     <groupId>ural</groupId>
     <artifactId>ural-common-starter</artifactId>
-    <version>1.13-SNAPSHOT</version>
+    <version>1.14-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>ural-db-starter</module>
@@ -33,6 +33,8 @@
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
         <springdoc.version>2.8.0</springdoc.version>
+        <testcontainer.version>1.21.4</testcontainer.version>
+        <testcontainer-redis.version>2.2.4</testcontainer-redis.version>
     </properties>
 
     <dependencyManagement>
@@ -81,17 +83,17 @@
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>postgresql</artifactId>
-                <version>1.19.8</version>
+                <version>${testcontainer.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.redis</groupId>
                 <artifactId>testcontainers-redis</artifactId>
-                <version>2.2.4</version>
+                <version>${testcontainer-redis.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>junit-jupiter</artifactId>
-                <version>1.20.4</version>
+                <version>${testcontainer.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

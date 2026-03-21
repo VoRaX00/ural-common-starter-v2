@@ -6,7 +6,7 @@
     <parent>
         <groupId>ural</groupId>
         <artifactId>ural-common-starter</artifactId>
-        <version>1.13-SNAPSHOT</version>
+        <version>1.14-SNAPSHOT</version>
     </parent>
 
     <artifactId>ural-test-starter</artifactId>
