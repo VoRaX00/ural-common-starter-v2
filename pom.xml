@@ -13,7 +13,7 @@
 
     <groupId>ural</groupId>
     <artifactId>ural-common-starter</artifactId>
-    <version>1.14-SNAPSHOT</version>
+    <version>1.15-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>ural-db-starter</module>

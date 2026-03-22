@@ -6,9 +6,11 @@ import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import ru.ural.exceptions.InternalServerException;
@@ -39,6 +41,34 @@ public class RestSender {
                     url,
                     method,
                     entity,
+                    typeReference
+            );
+
+            return new HttpResponse<>(response.getBody(), response.getStatusCode(), null);
+        } catch (HttpStatusCodeException e) {
+            log.error("Error send request on url: {} statusCode: {}", url, e.getStatusCode().value(), e);
+            throw httpExceptionMapper.map(e);
+        } catch (RestClientException e) {
+            log.error("Error send request on url: {}", url, e);
+            throw new InternalServerException(e.getMessage(), e);
+        }
+    }
+
+    public <T> HttpResponse<T> sendRequest(
+            @NonNull URI url,
+            @NonNull HttpMethod method,
+            @NonNull ParameterizedTypeReference<T> typeReference,
+            @NonNull String token
+    ) {
+        try {
+            HttpHeaders headers = new HttpHeaders(MultiValueMap.fromSingleValue(
+                    Map.of(HttpHeaders.AUTHORIZATION, token)
+            ));
+
+            ResponseEntity<T> response = restTemplate.exchange(
+                    url,
+                    method,
+                    new HttpEntity<>(headers),
                     typeReference
             );
 
