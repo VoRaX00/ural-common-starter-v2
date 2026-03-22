@@ -26,6 +26,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class RestSender {
 
+    private static final String BEARER_TOKEN_PREFIX = "Bearer %s";
+
     private final RestTemplate restTemplate;
 
     private final HttpExceptionMapper httpExceptionMapper;
@@ -61,8 +63,9 @@ public class RestSender {
             @NonNull String token
     ) {
         try {
+            String bearerToken = BEARER_TOKEN_PREFIX.formatted(token);
             HttpHeaders headers = new HttpHeaders(MultiValueMap.fromSingleValue(
-                    Map.of(HttpHeaders.AUTHORIZATION, token)
+                    Map.of(HttpHeaders.AUTHORIZATION, bearerToken)
             ));
 
             ResponseEntity<T> response = restTemplate.exchange(
