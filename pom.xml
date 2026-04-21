@@ -13,7 +13,7 @@
 
     <groupId>ural</groupId>
     <artifactId>ural-common-starter</artifactId>
-    <version>1.17-SNAPSHOT</version>
+    <version>1.18-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>ural-db-starter</module>
@@ -21,6 +21,7 @@
         <module>ural-exception-starter</module>
         <module>ural-test-starter</module>
         <module>ural-rest-starter</module>
+        <module>ural-files-starter</module>
     </modules>
 
     <properties>
